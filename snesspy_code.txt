@@ -1,0 +1,68 @@
+
+
+#!/usr/bin/python2.7
+
+# A script used to capture the input from SNES controller over arduino
+
+
+import serial
+import time
+import datetime
+
+# Change this to your USB device
+ser = serial.Serial('/dev/tty.usbmodemfa131',115200)
+
+
+file=open("test.txt",'a')
+
+while True:
+    data = ser.readline()
+    st = datetime.datetime.now().isoformat()[:-3]
+    #file.write(str(st) + "\t" + "\t".join(list(data)[4:16]) + "\n")
+    print str(st) + "\t" + "\t".join(list(data)[4:16]) + "\n"
+
+
+ser.close()
+file.close()
+
+
+numline=50 #50 lines to skip
+p=""
+o=open("test.filtered.txt","a")
+f=open("test.txt")
+
+o.write('timestamp' + '\t' + 'R'+ '\t' + 'L'+ '\t' + 'X'+ '\t' + 'A'+ '\t' + 'Right'+ '\t' + 'Left'+ '\t' + 'Down'+ '\t' + 'Up'+ '\t' + 'Start'+ '\t' + 'Select'+ '\t' + 'Y'+ '\t' + 'B'+ '\n')
+
+for i in range(numline):
+    f.next()
+
+for line in f:
+    if p:
+        o.write(p)
+    p=line
+
+o.close()
+f.close()
+
+
+##########rcode
+
+
+library(ggplot2)
+library(reshape2)
+
+
+data=read.delim('SNESspy/test.filtered.txt',head=T)
+a=strsplit(as.character(data$timestamp),':')
+a=unlist(a)
+a=matrix(a,ncol=3,byrow=T)
+b=strsplit(a[,3],'\\.')
+b=unlist(b)
+b=matrix(b,ncol=2,byrow=T)
+data3=cbind(a[,1:2],b,data)
+colnames(data3)[1:4]=c('dayhour','min','sec','mils')
+
+dd=melt(data3,in.var='timestamp')
+ggplot(dd,aes(timestamp,variable)) + geom_tile(aes(fill=value))
+table(data3[,3])
+
