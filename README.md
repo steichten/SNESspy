@@ -16,24 +16,25 @@ pressed and Low (0) indicates it is currently pressed The CLOCK pin raises and t
 the next button. This process is repeated 16 times (even though there are only 12 buttons on a SNES controller) 
 before the LATCH rises and the process starts again.
 
-Button order:
-CLOCK CYCLE	BUTTON
-1	B
-2	Y
-3	Select
-4	Start
-5	Up
-6	Down
-7	Left
-8	Right
-9	A
-10	X
-11	L
-12	R
-13	NA
-14	NA
-15	NA
-16	NA
+The order of the buttons is as follows:  
+
+1 B  
+2 Y  
+3 Select  
+4 Start  
+5 Up  
+6 Down  
+7 Left  
+8 Right  
+9 A  
+10 X  
+11 L  
+12 R  
+13 NA  
+14 NA  
+15 NA  
+16 NA  
+
 
 The intercept works to follow the LATCH, CLOCK, and DATA pins and dump the DATA value into a 16 bit integer:
 
