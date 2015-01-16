@@ -43,6 +43,5 @@ NA            …             B
 
 This integer is passed through the USB serial connection for visualization / logging
 
-<iframe width="560" height="315" src="//www.youtube.com/embed/tM1_7EJFPM4" frameborder="0" allowfullscreen></iframe>
-
+A video demo of Super Mario World can be found here: https://www.youtube.com/watch?v=tM1_7EJFPM4
 #Controller intercept
