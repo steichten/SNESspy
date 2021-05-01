@@ -6,7 +6,7 @@ These scripts are designed to be used along side a Teensy controller signal inte
 Scripts are written in Python 2.7
 
 
-![Alt text](https://dl.dropboxusercontent.com/u/4289891/snesspy.png "Overview of Programs (red indicates work in progress)")
+![Alt text](./snesspy.png "Overview of Programs (red indicates work in progress)")
 
 #Background
 This controller intercept works by tapping into the LATCH, CLOCK, and DATA pins of the controller. 
